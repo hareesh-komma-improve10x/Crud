@@ -11,5 +11,14 @@
         android:id="@+id/messages_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp" />
+        android:layout_margin="8dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/message_add_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#2196F3"
+        android:text="Add"
+        android:textAllCaps="false" />
 </LinearLayout>
