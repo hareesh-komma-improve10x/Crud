@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class TemplatesActivity extends AppCompatActivity {
 
-    public ArrayList<Templates> template;
+    public ArrayList<Template> templates;
     public RecyclerView templatesRv;
     public TemplatesAdapter templatesAdapter;
 
@@ -29,12 +29,12 @@ public class TemplatesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_templates);
         getSupportActionBar().setTitle("Templates");
-        addButton();
+        handleAdd();
         setUpDataForTemplates();
-        setUpTemplatesList();
+        setUpTemplateList();
     }
 
-    public void deleteMessage(Templates templates) {
+    public void deleteMessages(Template templates) {
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
         Call<Void> call = templatesService.deleteTemplates(templates.id);
@@ -42,7 +42,7 @@ public class TemplatesActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Toast.makeText(TemplatesActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
-                fetchData();
+                fetchTemplates();
             }
 
             @Override
@@ -53,10 +53,10 @@ public class TemplatesActivity extends AppCompatActivity {
         });
     }
 
-    private void addButton() {
-        Button addBtn = findViewById(R.id.add1_btn);
+    private void handleAdd() {
+        Button addBtn = findViewById(R.id.add_btn);
         addBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(this, AddTemplatesActivity.class);
+            Intent intent = new Intent(this, AddTemplateActivity.class);
             startActivity(intent);
         });
     }
@@ -64,50 +64,50 @@ public class TemplatesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        fetchData();
+        fetchTemplates();
     }
 
-    private void fetchData() {
+    private void fetchTemplates() {
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<List<Templates>> call = templatesService.fetchData();
-        call.enqueue(new Callback<List<Templates>>() {
+        Call<List<Template>> call = templatesService.fetchData();
+        call.enqueue(new Callback<List<Template>>() {
             @Override
-            public void onResponse(Call<List<Templates>> call, Response<List<Templates>> response) {
-                List<Templates> templates = response.body();
+            public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
+                List<Template> templates = response.body();
                 templatesAdapter.setTemplatesList(templates);
             }
 
             @Override
-            public void onFailure(Call<List<Templates>> call, Throwable t) {
+            public void onFailure(Call<List<Template>> call, Throwable t) {
                 Toast.makeText(TemplatesActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
 
             }
         });
     }
 
-    private void setUpTemplatesList() {
+    private void setUpTemplateList() {
         templatesRv = findViewById(R.id.templates_rv);
         templatesRv.setLayoutManager(new LinearLayoutManager(this));
         templatesAdapter = new TemplatesAdapter();
-        templatesAdapter.setTemplatesList(template);
+        templatesAdapter.setTemplatesList(templates);
         templatesRv.setAdapter(templatesAdapter);
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
-            public void onItemClicked(Templates templates) {
+            public void onItemClicked(Template templates) {
                 Toast.makeText(TemplatesActivity.this, "On Clicked", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onItemDelete(Templates templates) {
+            public void onItemDelete(Template templates) {
                 Toast.makeText(TemplatesActivity.this, "Successfully Delete", Toast.LENGTH_SHORT).show();
-                deleteMessage(templates);
+                deleteMessages(templates);
 
 
             }
 
             @Override
-            public void onItemEdit(Templates templates) {
+            public void onItemEdit(Template templates) {
                 Toast.makeText(TemplatesActivity.this, "Edited", Toast.LENGTH_SHORT).show();
 
             }
@@ -115,6 +115,6 @@ public class TemplatesActivity extends AppCompatActivity {
     }
 
     private void setUpDataForTemplates() {
-        template = new ArrayList<>();
+        templates = new ArrayList<>();
     }
 }

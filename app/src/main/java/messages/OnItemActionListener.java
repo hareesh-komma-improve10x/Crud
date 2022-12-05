@@ -2,7 +2,7 @@ package messages;
 
 public interface OnItemActionListener {
 
-    void onItemClicked(Messages messages);
-    void onItemDelete(Messages messages);
-    void onItemEdit(Messages messages);
+    void onItemClicked(Message messages);
+    void onItemDelete(Message messages);
+    void onItemEdit(Message messages);
 }

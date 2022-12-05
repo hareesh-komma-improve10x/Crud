@@ -13,18 +13,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddTemplatesActivity extends AppCompatActivity {
+public class AddTemplateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_templates);
         getSupportActionBar().setTitle("Add Template");
-        addBtn();
+        handleAdd();
     }
 
-    private void addBtn() {
-        Button addBtn = findViewById(R.id.add1_btn);
+    private void handleAdd() {
+        Button addBtn = findViewById(R.id.add_btn);
         addBtn.setOnClickListener(view -> {
             EditText multilineTxt = findViewById(R.id.multiline_txt);
             String multiline = multilineTxt.getText().toString();
@@ -33,22 +33,22 @@ public class AddTemplatesActivity extends AppCompatActivity {
     }
 
     public void createData(String multiline) {
-        Templates templates = new Templates();
-        templates.messageTxt = multiline;
+        Template templates = new Template();
+        templates.messageText = multiline;
 
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<Templates> call = templatesService.createData(templates);
-        call.enqueue(new Callback<Templates>() {
+        Call<Template> call = templatesService.createData(templates);
+        call.enqueue(new Callback<Template>() {
             @Override
-            public void onResponse(Call<Templates> call, Response<Templates> response) {
-                Toast.makeText(AddTemplatesActivity.this, "Successfully Completed", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<Template> call, Response<Template> response) {
+                Toast.makeText(AddTemplateActivity.this, "Successfully Completed", Toast.LENGTH_SHORT).show();
                 finish();
             }
 
             @Override
-            public void onFailure(Call<Templates> call, Throwable t) {
-                Toast.makeText(AddTemplatesActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<Template> call, Throwable t) {
+                Toast.makeText(AddTemplateActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
 
             }
         });

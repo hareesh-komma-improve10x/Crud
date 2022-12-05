@@ -2,7 +2,7 @@ package messages;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Messages {
+public class Message {
     @SerializedName("_id")
     public String id;
     @SerializedName("name")
@@ -10,6 +10,5 @@ public class Messages {
     @SerializedName("phoneNumber")
     public String phoneNumber;
     @SerializedName("messageText")
-    public String message;
-
+    public String messageText;
 }

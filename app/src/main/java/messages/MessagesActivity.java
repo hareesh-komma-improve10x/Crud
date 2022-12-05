@@ -19,10 +19,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends AppCompatActivity {
-    public ArrayList<Messages> messagesId;
+    public ArrayList<Message> messagesId;
     public RecyclerView messagesRv;
     public MessagesAdapter messagesAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class MessagesActivity extends AppCompatActivity {
         setUpMessagesList();
     }
 
-    public void deleteMessage(Messages messages) {
+    public void deleteMessage(Message messages) {
         MessagesApi messagesApi = new MessagesApi();
         MessagesService messagesService = messagesApi.createMessagesService();
         Call<Void> call = messagesService.deleteMessage(messages.id);
@@ -63,7 +62,7 @@ public class MessagesActivity extends AppCompatActivity {
     private void addBtn() {
         Button addBtn = findViewById(R.id.message_add_btn);
         addBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(this, AddMessagesActivity.class);
+            Intent intent = new Intent(this, AddMessageActivity.class);
             startActivity(intent);
         });
     }
@@ -71,21 +70,20 @@ public class MessagesActivity extends AppCompatActivity {
     private void fetchTasks() {
         MessagesApi messagesApi = new MessagesApi();
         MessagesService messagesService = messagesApi.createMessagesService();
-        Call<List<Messages>> call = messagesService.fetchTasks();
-        call.enqueue(new Callback<List<Messages>>() {
+        Call<List<Message>> call = messagesService.fetchTasks();
+        call.enqueue(new Callback<List<Message>>() {
             @Override
-            public void onResponse(Call<List<Messages>> call, Response<List<Messages>> response) {
-                List<Messages> messages = response.body();
+            public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
+                List<Message> messages = response.body();
                 messagesAdapter.setData(messages);
             }
 
             @Override
-            public void onFailure(Call<List<Messages>> call, Throwable t) {
+            public void onFailure(Call<List<Message>> call, Throwable t) {
                 Toast.makeText(MessagesActivity.this, "Failed", Toast.LENGTH_SHORT).show();
 
             }
         });
-
     }
 
     private void setUpMessagesList() {
@@ -95,19 +93,19 @@ public class MessagesActivity extends AppCompatActivity {
         messagesAdapter.setData(messagesId);
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
-            public void onItemClicked(Messages messages) {
+            public void onItemClicked(Message messages) {
                 Toast.makeText(MessagesActivity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onItemDelete(Messages messages) {
+            public void onItemDelete(Message messages) {
                 Toast.makeText(MessagesActivity.this, "Delete Successfully", Toast.LENGTH_SHORT).show();
                 deleteMessage(messages);
 
             }
 
             @Override
-            public void onItemEdit(Messages messages) {
+            public void onItemEdit(Message messages) {
                 Toast.makeText(MessagesActivity.this, "On Item Edit", Toast.LENGTH_SHORT).show();
 
             }
@@ -117,16 +115,5 @@ public class MessagesActivity extends AppCompatActivity {
 
     private void setUpData() {
         messagesId = new ArrayList<>();
-        Messages messages = new Messages();
-        messages.name = "Aravind";
-        messages.phoneNumber = "+91 9000540052";
-        messages.message = "Hi, Welcome to Improve 10X.";
-        messagesId.add(messages);
-
-        Messages messages1 = new Messages();
-        messages1.name = "Ramesh";
-        messages1.phoneNumber = "+91 9999999999";
-        messages1.message = "Hi, Welcome to Improve 10X.";
-        messagesId.add(messages1);
     }
 }

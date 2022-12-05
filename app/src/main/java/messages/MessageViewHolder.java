@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.crud.R;
 
-public class MessagesViewHolder extends RecyclerView.ViewHolder {
+public class MessageViewHolder extends RecyclerView.ViewHolder {
 
     public TextView nameTxt;
     public TextView phoneNumberTxt;
     public TextView messageTxt;
     public ImageButton deleteBtn;
 
-    public MessagesViewHolder(@NonNull View itemView) {
+    public MessageViewHolder(@NonNull View itemView) {
         super(itemView);
         nameTxt = itemView.findViewById(R.id.name_txt);
         phoneNumberTxt = itemView.findViewById(R.id.phone_number_txt);

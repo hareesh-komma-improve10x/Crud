@@ -11,10 +11,10 @@ import retrofit2.http.Path;
 
 public interface TemplatesService {
     @GET("hareeshTemplates")
-    Call<List<Templates>> fetchData();
+    Call<List<Template>> fetchData();
 
     @POST("hareeshTemplates")
-    Call<Templates> createData(@Body Templates templates);
+    Call<Template> createData(@Body Template templates);
 
     @DELETE("hareeshTemplates/{id}")
     Call<Void> deleteTemplates (@Path("id") String id);
