@@ -6,21 +6,39 @@
     android:layout_height="match_parent"
     android:layout_margin="8dp"
     android:orientation="vertical"
-    tools:context=".DashboardActivity">
+    tools:context="messages.DashboardActivity">
 
     <ImageButton
         android:id="@+id/image_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        app:srcCompat="@drawable/login_form_image" />
+        app:srcCompat="@drawable/improve10x_logo__1_" />
 
     <TextView
         android:id="@+id/title_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:gravity="center"
         android:text="Messages"
+        android:textColor="#272222"
+        android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/template_image_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/improve10x_logo__1_" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:text="Templates"
         android:textColor="#272222"
         android:textSize="20sp" />
 </LinearLayout>

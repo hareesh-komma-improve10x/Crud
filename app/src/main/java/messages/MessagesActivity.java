@@ -1,4 +1,4 @@
-package com.improve10x.crud;
+package messages;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.improve10x.crud.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,26 @@ public class MessagesActivity extends AppCompatActivity {
         addBtn();
         setUpData();
         setUpMessagesList();
-        fetchTasks();
+    }
+
+    public void deleteMessage(Messages messages) {
+        MessagesApi messagesApi = new MessagesApi();
+        MessagesService messagesService = messagesApi.createMessagesService();
+        Call<Void> call = messagesService.deleteMessage(messages.id);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(MessagesActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
+                fetchTasks();
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(MessagesActivity.this, "Failed to Delete", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     @Override
@@ -72,6 +93,25 @@ public class MessagesActivity extends AppCompatActivity {
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesAdapter = new MessagesAdapter();
         messagesAdapter.setData(messagesId);
+        messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onItemClicked(Messages messages) {
+                Toast.makeText(MessagesActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemDelete(Messages messages) {
+                Toast.makeText(MessagesActivity.this, "Delete Successfully", Toast.LENGTH_SHORT).show();
+                deleteMessage(messages);
+
+            }
+
+            @Override
+            public void onItemEdit(Messages messages) {
+                Toast.makeText(MessagesActivity.this, "On Item Edit", Toast.LENGTH_SHORT).show();
+
+            }
+        });
         messagesRv.setAdapter(messagesAdapter);
     }
 

@@ -1,4 +1,4 @@
-package com.improve10x.crud;
+package messages;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,11 +7,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.improve10x.crud.R;
+
 import java.util.List;
 
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder>{
     public List<Messages> messagesArrayList;
+    public OnItemActionListener onItemActionListener;
+
+    public void setOnItemActionListener(OnItemActionListener listener) {
+        onItemActionListener = listener;
+    }
 
     public void setData(List<Messages> messages) {
         messagesArrayList = messages;
@@ -33,6 +39,12 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder>{
         holder.nameTxt.setText(messages.name);
         holder.phoneNumberTxt.setText(messages.phoneNumber);
         holder.messageTxt.setText(messages.message);
+        holder.deleteBtn.setOnClickListener(view -> {
+            onItemActionListener.onItemDelete(messages);
+        });
+        holder.itemView.setOnClickListener(view -> {
+            onItemActionListener.onItemClicked(messages);
+        });
     }
 
     @Override
