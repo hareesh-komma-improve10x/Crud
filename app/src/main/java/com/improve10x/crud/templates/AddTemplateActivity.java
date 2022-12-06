@@ -28,11 +28,11 @@ public class AddTemplateActivity extends AppCompatActivity {
         addBtn.setOnClickListener(view -> {
             EditText multilineTxt = findViewById(R.id.multiline_txt);
             String multiline = multilineTxt.getText().toString();
-            createData(multiline);
+            createTemplate(multiline);
         });
     }
 
-    public void createData(String multiline) {
+    public void createTemplate(String multiline) {
         Template templates = new Template();
         templates.messageText = multiline;
 
