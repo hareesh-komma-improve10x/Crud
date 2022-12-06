@@ -38,7 +38,7 @@ public class AddTemplateActivity extends AppCompatActivity {
 
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<Template> call = templatesService.createData(templates);
+        Call<Template> call = templatesService.createTemplate(templates);
         call.enqueue(new Callback<Template>() {
             @Override
             public void onResponse(Call<Template> call, Response<Template> response) {

@@ -37,7 +37,7 @@ public class TemplatesActivity extends AppCompatActivity {
     public void deleteMessage(Template templates) {
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<Void> call = templatesService.deleteTemplates(templates.id);
+        Call<Void> call = templatesService.deleteTemplate(templates.id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -69,7 +69,7 @@ public class TemplatesActivity extends AppCompatActivity {
     private void fetchTemplates() {
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<List<Template>> call = templatesService.fetchData();
+        Call<List<Template>> call = templatesService.fetchTemplates();
         call.enqueue(new Callback<List<Template>>() {
             @Override
             public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
