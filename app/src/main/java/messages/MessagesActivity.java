@@ -30,7 +30,7 @@ public class MessagesActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Messages");
         addBtn();
         setUpData();
-        setUpMessagesList();
+        setUpMessageList();
     }
 
     public void deleteMessage(Message messages) {
@@ -86,7 +86,7 @@ public class MessagesActivity extends AppCompatActivity {
         });
     }
 
-    private void setUpMessagesList() {
+    private void setUpMessageList() {
         messagesRv = findViewById(R.id.messages_rv);
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesAdapter = new MessagesAdapter();
