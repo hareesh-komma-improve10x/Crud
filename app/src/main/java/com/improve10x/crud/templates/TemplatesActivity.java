@@ -30,11 +30,11 @@ public class TemplatesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_templates);
         getSupportActionBar().setTitle("Templates");
         handleAdd();
-        setUpDataForTemplates();
-        setUpTemplateList();
+        setupData();
+        setupTemplatesRv();
     }
 
-    public void deleteMessages(Template templates) {
+    public void deleteMessage(Template templates) {
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
         Call<Void> call = templatesService.deleteTemplates(templates.id);
@@ -48,7 +48,6 @@ public class TemplatesActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(TemplatesActivity.this, "Failed to Delete", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -81,12 +80,11 @@ public class TemplatesActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Template>> call, Throwable t) {
                 Toast.makeText(TemplatesActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
 
-    private void setUpTemplateList() {
+    private void setupTemplatesRv() {
         templatesRv = findViewById(R.id.templates_rv);
         templatesRv.setLayoutManager(new LinearLayoutManager(this));
         templatesAdapter = new TemplatesAdapter();
@@ -101,20 +99,17 @@ public class TemplatesActivity extends AppCompatActivity {
             @Override
             public void onItemDelete(Template templates) {
                 Toast.makeText(TemplatesActivity.this, "Successfully Delete", Toast.LENGTH_SHORT).show();
-                deleteMessages(templates);
-
-
+                deleteMessage(templates);
             }
 
             @Override
             public void onItemEdit(Template templates) {
                 Toast.makeText(TemplatesActivity.this, "Edited", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
 
-    private void setUpDataForTemplates() {
+    private void setupData() {
         templates = new ArrayList<>();
     }
 }
