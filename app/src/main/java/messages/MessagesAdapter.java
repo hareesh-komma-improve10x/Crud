@@ -14,7 +14,9 @@ import java.util.List;
 public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder>{
 
     public List<Message> messageList;
+
     public OnItemActionListener onItemActionListener;
+
     public void setOnItemActionListener(OnItemActionListener listener) {
         onItemActionListener = listener;
     }
@@ -37,7 +39,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder>{
         Message messages = messageList.get(position);
         holder.nameTxt.setText(messages.name);
         holder.phoneNumberTxt.setText(messages.phoneNumber);
-        holder.messageTxt.setText(messages.messageText);
+        holder.messageTextTxt.setText(messages.messageText);
         holder.delete.setOnClickListener(view -> {
             onItemActionListener.onItemDelete(messages);
         });
