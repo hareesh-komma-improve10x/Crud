@@ -24,7 +24,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder>{
         notifyDataSetChanged();
     }
 
-
     @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,7 +38,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder>{
         holder.nameTxt.setText(messages.name);
         holder.phoneNumberTxt.setText(messages.phoneNumber);
         holder.messageTxt.setText(messages.messageText);
-        holder.deleteBtn.setOnClickListener(view -> {
+        holder.delete.setOnClickListener(view -> {
             onItemActionListener.onItemDelete(messages);
         });
         holder.itemView.setOnClickListener(view -> {
