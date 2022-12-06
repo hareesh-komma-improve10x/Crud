@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 
 import com.improve10x.crud.R;
-import com.improve10x.crud.templates.SeriesListActivity;
+import com.improve10x.crud.series.SeriesItemsActivity;
 import com.improve10x.crud.templates.TemplatesActivity;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -25,7 +25,7 @@ public class DashboardActivity extends AppCompatActivity {
     private void handleAddSeriesButton() {
         ImageButton seriesImageBtn = findViewById(R.id.series_image_btn);
         seriesImageBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(this, SeriesListActivity.class);
+            Intent intent = new Intent(this, SeriesItemsActivity.class);
             startActivity(intent);
         });
     }

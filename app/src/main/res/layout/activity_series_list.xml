@@ -6,41 +6,21 @@
     android:layout_height="match_parent"
     android:layout_margin="8dp"
     android:orientation="vertical"
-    tools:context=".templates.SeriesListActivity">
+    tools:context=".series.SeriesItemsActivity">
 
-    <ImageView
-        android:id="@+id/panda_image_img"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/series_items_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/textView8"
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/add_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:gravity="center"
-        android:text="KungFu Panda Movie Series"
-        android:textColor="#272222"
-        android:textSize="20sp" />
-
-    <ImageView
-        android:id="@+id/potter_image_img"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:gravity="center"
-        android:text="Harry Potter Movie Series"
-        android:textColor="#272222"
-        android:textSize="20sp" />
+        android:backgroundTint="#03A9F4"
+        android:text="Add"
+        android:textAllCaps="false" />
 </LinearLayout>
