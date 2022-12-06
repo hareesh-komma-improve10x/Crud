@@ -32,11 +32,11 @@ public class AddMessageActivity extends AppCompatActivity {
             String phoneNumber = phoneNumberTxt.getText().toString();
             EditText messageTxt = findViewById(R.id.message_txt);
             String message = messageTxt.getText().toString();
-            createTasks(name, phoneNumber, message);
+            createMessage(name, phoneNumber, message);
         });
     }
 
-    public void createTasks(String name, String phoneNumber, String message) {
+    public void createMessage(String name, String phoneNumber, String message) {
         Message messages = new Message();
         messages.name = name;
         messages.phoneNumber = phoneNumber;
@@ -44,7 +44,7 @@ public class AddMessageActivity extends AppCompatActivity {
 
         MessagesApi messagesApi = new MessagesApi();
         MessagesService messagesService = messagesApi.createMessagesService();
-        Call<Message> call = messagesService.createTasks(messages);
+        Call<Message> call = messagesService.createMessage(messages);
         call.enqueue(new Callback<Message>() {
             @Override
             public void onResponse(Call<Message> call, Response<Message> response) {

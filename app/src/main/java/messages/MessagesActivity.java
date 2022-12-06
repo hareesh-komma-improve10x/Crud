@@ -19,7 +19,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends AppCompatActivity {
-    public ArrayList<Message> messagesId;
+    public ArrayList<Message> messages;
     public RecyclerView messagesRv;
     public MessagesAdapter messagesAdapter;
 
@@ -28,9 +28,9 @@ public class MessagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
         getSupportActionBar().setTitle("Messages");
-        addBtn();
-        setUpData();
-        setUpMessageList();
+        handleAdd();
+        setupData();
+        setupMessagesRv();
     }
 
     public void deleteMessage(Message messages) {
@@ -41,7 +41,7 @@ public class MessagesActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Toast.makeText(MessagesActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
-                fetchTasks();
+                fetchMessages();
 
             }
 
@@ -56,10 +56,10 @@ public class MessagesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        fetchTasks();
+        fetchMessages();
     }
 
-    private void addBtn() {
+    private void handleAdd() {
         Button addBtn = findViewById(R.id.message_add_btn);
         addBtn.setOnClickListener(view -> {
             Intent intent = new Intent(this, AddMessageActivity.class);
@@ -67,10 +67,10 @@ public class MessagesActivity extends AppCompatActivity {
         });
     }
 
-    private void fetchTasks() {
+    private void fetchMessages() {
         MessagesApi messagesApi = new MessagesApi();
         MessagesService messagesService = messagesApi.createMessagesService();
-        Call<List<Message>> call = messagesService.fetchTasks();
+        Call<List<Message>> call = messagesService.fetchMessages();
         call.enqueue(new Callback<List<Message>>() {
             @Override
             public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
@@ -86,11 +86,11 @@ public class MessagesActivity extends AppCompatActivity {
         });
     }
 
-    private void setUpMessageList() {
+    private void setupMessagesRv() {
         messagesRv = findViewById(R.id.messages_rv);
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesAdapter = new MessagesAdapter();
-        messagesAdapter.setData(messagesId);
+        messagesAdapter.setData(messages);
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onItemClicked(Message messages) {
@@ -113,7 +113,7 @@ public class MessagesActivity extends AppCompatActivity {
         messagesRv.setAdapter(messagesAdapter);
     }
 
-    private void setUpData() {
-        messagesId = new ArrayList<>();
+    private void setupData() {
+        messages = new ArrayList<>();
     }
 }
