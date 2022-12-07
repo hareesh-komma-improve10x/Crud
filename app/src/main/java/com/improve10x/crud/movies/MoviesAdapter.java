@@ -16,7 +16,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     public ArrayList<Movie> movies;
 
-    public void setData(ArrayList<Movie> movieList) {
+    void setData(ArrayList<Movie> movieList) {
         movies = movieList;
     }
 
