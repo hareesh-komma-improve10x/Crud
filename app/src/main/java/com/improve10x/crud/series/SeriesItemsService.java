@@ -20,6 +20,4 @@ public interface SeriesItemsService {
 
     @DELETE(Constants.SERIES_END_POINT + "/{id}")
     Call<Void> deleteSeriesItem(@Path("id")String id);
-
-
 }

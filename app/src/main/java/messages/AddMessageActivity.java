@@ -36,7 +36,7 @@ public class AddMessageActivity extends AppCompatActivity {
         });
     }
 
-    public void createMessage(String name, String phoneNumber, String message) {
+    private void createMessage(String name, String phoneNumber, String message) {
         Message messages = new Message();
         messages.name = name;
         messages.phoneNumber = phoneNumber;
