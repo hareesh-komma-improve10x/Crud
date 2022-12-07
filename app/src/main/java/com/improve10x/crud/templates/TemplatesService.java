@@ -20,5 +20,4 @@ public interface TemplatesService {
 
     @DELETE(Constants.TEMPLATE_END_POINT + "/{id}")
     Call<Void> deleteTemplate(@Path("id") String id);
-
 }
