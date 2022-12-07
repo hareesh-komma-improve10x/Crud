@@ -1,4 +1,4 @@
-package messages;
+package com.improve10x.crud.messages;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;

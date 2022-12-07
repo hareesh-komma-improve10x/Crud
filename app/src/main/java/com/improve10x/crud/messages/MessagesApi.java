@@ -1,8 +1,7 @@
-package messages;
+package com.improve10x.crud.messages;
 
 import com.improve10x.crud.Constants;
 
-import messages.MessagesService;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

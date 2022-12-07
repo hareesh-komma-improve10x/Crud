@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="messages.SplashScreenActivity">
+    tools:context="com.improve10x.crud.messages.SplashScreenActivity">
 
   <TextView
       android:id="@+id/textView2"

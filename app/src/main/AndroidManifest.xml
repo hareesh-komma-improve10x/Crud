@@ -31,16 +31,16 @@
             android:name=".templates.TemplatesActivity"
             android:exported="false" />
         <activity
-            android:name="messages.AddMessageActivity"
+            android:name="com.improve10x.crud.messages.AddMessageActivity"
             android:exported="false" />
         <activity
-            android:name="messages.MessagesActivity"
+            android:name="com.improve10x.crud.messages.MessagesActivity"
             android:exported="false" />
         <activity
-            android:name="messages.DashboardActivity"
+            android:name="com.improve10x.crud.messages.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name="messages.SplashScreenActivity"
+            android:name="com.improve10x.crud.messages.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="messages.MainActivity"
+            android:name="com.improve10x.crud.messages.MainActivity"
             android:exported="true" />
     </application>
 

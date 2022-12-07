@@ -23,7 +23,7 @@ public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesItemViewHolde
         onItemActionListener = listener;
     }
 
-    public void setData(List<SeriesItem> seriesItems) {
+     void setData(List<SeriesItem> seriesItems) {
         seriesList = seriesItems;
         notifyDataSetChanged();
     }
