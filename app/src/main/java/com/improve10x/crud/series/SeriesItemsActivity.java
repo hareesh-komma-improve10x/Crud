@@ -19,9 +19,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SeriesItemsActivity extends AppCompatActivity {
-    public ArrayList<SeriesItem> seriesItems;
-    public RecyclerView seriesItemsRv;
-    public SeriesItemsAdapter seriesItemsAdapter;
+    private ArrayList<SeriesItem> seriesItems;
+    private RecyclerView seriesItemsRv;
+    private SeriesItemsAdapter seriesItemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class SeriesItemsActivity extends AppCompatActivity {
         setupSeriesItemsRv();
     }
 
-    public void deleteSeriesItem(SeriesItem seriesItem) {
+    private void deleteSeriesItem(SeriesItem seriesItem) {
         SeriesItemsApi seriesItemsApi = new SeriesItemsApi();
         SeriesItemsService seriesItemsService = seriesItemsApi.createSeriesItemsService();
         Call<Void> call = seriesItemsService.deleteSeriesItem(seriesItem.Id);
