@@ -31,9 +31,6 @@ public class DashboardActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MoviesActivity.class);
             startActivity(intent);
         });
-
-
-
     }
 
     private void handleAddSeriesButton() {
