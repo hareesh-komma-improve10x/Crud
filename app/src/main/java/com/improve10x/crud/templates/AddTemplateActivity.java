@@ -32,7 +32,7 @@ public class AddTemplateActivity extends AppCompatActivity {
         });
     }
 
-    public void createTemplate(String multiline) {
+    private void createTemplate(String multiline) {
         Template templates = new Template();
         templates.messageText = multiline;
 
