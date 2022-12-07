@@ -19,9 +19,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends AppCompatActivity {
-    public ArrayList<Message> messages;
-    public RecyclerView messagesRv;
-    public MessagesAdapter messagesAdapter;
+    private ArrayList<Message> messages;
+    private RecyclerView messagesRv;
+    private MessagesAdapter messagesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class MessagesActivity extends AppCompatActivity {
         setupMessagesRv();
     }
 
-    public void deleteMessage(Message messages) {
+    private void deleteMessage(Message messages) {
         MessagesApi messagesApi = new MessagesApi();
         MessagesService messagesService = messagesApi.createMessagesService();
         Call<Void> call = messagesService.deleteMessage(messages.id);
