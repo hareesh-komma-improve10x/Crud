@@ -12,7 +12,9 @@
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Series Id" />
+        android:text="Series Id"
+        android:textColor="#292424"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/seriesitems_id_txt"
@@ -25,7 +27,9 @@
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Series Name" />
+        android:text="Series Name"
+        android:textColor="#2E2828"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/seriesitems_name_txt"
@@ -38,7 +42,9 @@
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Image Url" />
+        android:text="Image Url"
+        android:textColor="#2B2525"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/seriesitems_imageurl_txt"
@@ -58,6 +64,8 @@
             android:id="@+id/add_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add" />
+            android:backgroundTint="#03A9F4"
+            android:text="Add"
+            android:textAllCaps="false" />
     </LinearLayout>
 </LinearLayout>

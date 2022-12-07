@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.improve10x.crud.R;
+import com.improve10x.crud.movies.MoviesActivity;
 import com.improve10x.crud.series.SeriesItemsActivity;
 import com.improve10x.crud.templates.TemplatesActivity;
 
@@ -20,6 +22,18 @@ public class DashboardActivity extends AppCompatActivity {
         handleAddMessageButton();
         handleAddTemplateButton();
         handleAddSeriesButton();
+        handleAddMoviesButton();
+    }
+
+    private void handleAddMoviesButton() {
+        ImageView moviesImageBtn = findViewById(R.id.movies_image_btn);
+        moviesImageBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MoviesActivity.class);
+            startActivity(intent);
+        });
+
+
+
     }
 
     private void handleAddSeriesButton() {

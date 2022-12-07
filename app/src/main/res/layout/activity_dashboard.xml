@@ -56,4 +56,19 @@
         android:text="Series"
         android:textColor="#272222"
         android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/movies_image_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/improve10x_logo__1_" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Movies"
+        android:textColor="#272222"
+        android:textSize="20sp" />
 </LinearLayout>
