@@ -20,9 +20,9 @@ import retrofit2.Response;
 
 public class TemplatesActivity extends AppCompatActivity {
 
-    public ArrayList<Template> templates;
-    public RecyclerView templatesRv;
-    public TemplatesAdapter templatesAdapter;
+    private ArrayList<Template> templates;
+    private RecyclerView templatesRv;
+    private TemplatesAdapter templatesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class TemplatesActivity extends AppCompatActivity {
         setupTemplatesRv();
     }
 
-    public void deleteMessage(Template templates) {
+    private void deleteMessage(Template templates) {
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
         Call<Void> call = templatesService.deleteTemplate(templates.id);
