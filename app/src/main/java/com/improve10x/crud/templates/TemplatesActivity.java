@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class TemplatesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_templates);
+        Log.i("TemplatesActivity", "onCreate");
         getSupportActionBar().setTitle("Templates");
         handleAdd();
         setupData();
@@ -63,6 +65,7 @@ public class TemplatesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.i("TemplatesActivity", "onCreate");
         fetchTemplates();
     }
 
