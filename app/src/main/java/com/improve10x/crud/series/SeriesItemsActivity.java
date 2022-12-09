@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.improve10x.crud.R;
+import com.improve10x.crud.api.CrudApi;
+import com.improve10x.crud.api.CrudService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +38,9 @@ public class SeriesItemsActivity extends AppCompatActivity {
     }
 
     private void deleteSeriesItem(SeriesItem seriesItem) {
-        SeriesItemsApi seriesItemsApi = new SeriesItemsApi();
-        SeriesItemsService seriesItemsService = seriesItemsApi.createSeriesItemsService();
-        Call<Void> call = seriesItemsService.deleteSeriesItem(seriesItem.Id);
+        CrudApi crudApi = new CrudApi();
+        CrudService crudService = crudApi.createCrudService();
+        Call<Void> call = crudService.deleteSeriesItem(seriesItem.Id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -70,9 +72,9 @@ public class SeriesItemsActivity extends AppCompatActivity {
     }
 
     private void fetchSeriesItems() {
-        SeriesItemsApi seriesItemsApi = new SeriesItemsApi();
-        SeriesItemsService seriesItemsService = seriesItemsApi.createSeriesItemsService();
-        Call<List<SeriesItem>> call = seriesItemsService.fetchSeriesItems();
+        CrudApi crudApi = new CrudApi();
+        CrudService crudService = crudApi.createCrudService();
+        Call<List<SeriesItem>> call = crudService.fetchSeriesItems();
         call.enqueue(new Callback<List<SeriesItem>>() {
             @Override
             public void onResponse(Call<List<SeriesItem>> call, Response<List<SeriesItem>> response) {

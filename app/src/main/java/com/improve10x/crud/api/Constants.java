@@ -1,4 +1,4 @@
-package com.improve10x.crud;
+package com.improve10x.crud.api;
 
 public class Constants {
     public static final String MESSAGE_END_POINT = "hareeshMessageHistory";
