@@ -22,6 +22,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends AppCompatActivity {
+
+    private CrudService crudService;
     private ArrayList<Message> messages;
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
@@ -30,28 +32,40 @@ public class MessagesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
-        Log.i("MessagesActivity", "onCreate");
         getSupportActionBar().setTitle("Messages");
+        log("onCreate");
+        setupApiService();
         handleAdd();
         setupData();
         setupMessagesRv();
     }
 
-    private void deleteMessage(Message messages) {
+    private void log(String message) {
+        Log.i("MessagesActivity", message);
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void setupApiService() {
         CrudApi crudApi = new CrudApi();
-        CrudService crudService = crudApi.createCrudService();
+        crudService = crudApi.createCrudService();
+    }
+
+    private void deleteMessage(Message messages) {
         Call<Void> call = crudService.deleteMessage(messages.id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(MessagesActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
+                showToast("Successfully Completed");
                 fetchMessages();
 
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(MessagesActivity.this, "Failed to Delete", Toast.LENGTH_SHORT).show();
+                showToast("Failed to Delete");
 
             }
         });
@@ -60,7 +74,7 @@ public class MessagesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("MessagesActivity", "onResume");
+        log("onResume");
         fetchMessages();
     }
 
@@ -73,8 +87,6 @@ public class MessagesActivity extends AppCompatActivity {
     }
 
     private void fetchMessages() {
-        CrudApi crudApi = new CrudApi();
-        CrudService crudService = crudApi.createCrudService();
         Call<List<Message>> call = crudService.fetchMessages();
         call.enqueue(new Callback<List<Message>>() {
             @Override
@@ -85,7 +97,7 @@ public class MessagesActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Message>> call, Throwable t) {
-                Toast.makeText(MessagesActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                showToast("Failed");
 
             }
         });
@@ -99,19 +111,19 @@ public class MessagesActivity extends AppCompatActivity {
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onItemClicked(Message messages) {
-                Toast.makeText(MessagesActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                showToast("Clicked");
             }
 
             @Override
             public void onItemDelete(Message messages) {
-                Toast.makeText(MessagesActivity.this, "Delete Successfully", Toast.LENGTH_SHORT).show();
+                showToast("Delete Successfully");
                 deleteMessage(messages);
 
             }
 
             @Override
             public void onItemEdit(Message messages) {
-                Toast.makeText(MessagesActivity.this, "On Item Edit", Toast.LENGTH_SHORT).show();
+                showToast("On Item Edit");
 
             }
         });

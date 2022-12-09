@@ -17,12 +17,24 @@ import retrofit2.Response;
 
 public class AddMessageActivity extends AppCompatActivity {
 
+    public CrudService crudService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_messages);
         getSupportActionBar().setTitle("Add Message");
         handleAdd();
+        setupApiService();
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     private void handleAdd() {
@@ -44,19 +56,17 @@ public class AddMessageActivity extends AppCompatActivity {
         messages.phoneNumber = phoneNumber;
         messages.messageText = message;
 
-        CrudApi crudApi = new CrudApi();
-        CrudService crudService = crudApi.createCrudService();
         Call<Message> call = crudService.createMessage(messages);
         call.enqueue(new Callback<Message>() {
             @Override
             public void onResponse(Call<Message> call, Response<Message> response) {
-                Toast.makeText(AddMessageActivity.this, "Successfully completed", Toast.LENGTH_SHORT).show();
+                showToast("Successfully Completed");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Message> call, Throwable t) {
-                Toast.makeText(AddMessageActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                showToast("Failed to Delete");
             }
         });
     }
