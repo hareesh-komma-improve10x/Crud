@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.improve10x.crud.R;
+import com.improve10x.crud.api.CrudApi;
+import com.improve10x.crud.api.CrudService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,9 +38,9 @@ public class AddTemplateActivity extends AppCompatActivity {
         Template templates = new Template();
         templates.messageText = multiline;
 
-        TemplatesApi templatesApi = new TemplatesApi();
-        TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<Template> call = templatesService.createTemplate(templates);
+        CrudApi crudApi = new CrudApi();
+        CrudService crudService = crudApi.createCrudService();
+        Call<Template> call = crudService.createTemplate(templates);
         call.enqueue(new Callback<Template>() {
             @Override
             public void onResponse(Call<Template> call, Response<Template> response) {

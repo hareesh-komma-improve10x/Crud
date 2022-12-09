@@ -2,6 +2,7 @@ package com.improve10x.crud.api;
 
 import com.improve10x.crud.Constants;
 import com.improve10x.crud.messages.Message;
+import com.improve10x.crud.templates.Template;
 
 import java.util.List;
 
@@ -21,4 +22,13 @@ public interface CrudService {
 
     @DELETE(Constants.MESSAGE_END_POINT + "/{id}")
     Call<Void> deleteMessage(@Path("id") String id);
+
+    @GET(Constants.TEMPLATE_END_POINT)
+    Call<List<Template>> fetchTemplates();
+
+    @POST(Constants.TEMPLATE_END_POINT)
+    Call<Template> createTemplate(@Body Template templates);
+
+    @DELETE(Constants.TEMPLATE_END_POINT + "/{id}")
+    Call<Void> deleteTemplate(@Path("id") String id);
 }

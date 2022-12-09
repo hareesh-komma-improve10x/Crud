@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.improve10x.crud.R;
+import com.improve10x.crud.api.CrudApi;
+import com.improve10x.crud.api.CrudService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +39,9 @@ public class TemplatesActivity extends AppCompatActivity {
     }
 
     private void deleteMessage(Template templates) {
-        TemplatesApi templatesApi = new TemplatesApi();
-        TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<Void> call = templatesService.deleteTemplate(templates.id);
+        CrudApi crudApi = new CrudApi();
+        CrudService crudService = crudApi.createCrudService();
+        Call<Void> call = crudService.deleteTemplate(templates.id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -70,9 +72,9 @@ public class TemplatesActivity extends AppCompatActivity {
     }
 
     private void fetchTemplates() {
-        TemplatesApi templatesApi = new TemplatesApi();
-        TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<List<Template>> call = templatesService.fetchTemplates();
+        CrudApi crudApi = new CrudApi();
+        CrudService crudService = crudApi.createCrudService();
+        Call<List<Template>> call = crudService.fetchTemplates();
         call.enqueue(new Callback<List<Template>>() {
             @Override
             public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
