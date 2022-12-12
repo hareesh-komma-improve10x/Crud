@@ -36,6 +36,31 @@ public class MessagesActivity extends BaseActivity {
         handleAdd();
         setupData();
         setupMessagesRv();
+        setupAdapter();
+    }
+
+    private void setupAdapter() {
+        messagesAdapter = new MessagesAdapter();
+        messagesAdapter.setData(message);
+        messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onItemClicked(Message messages) {
+                showToast("Clicked");
+            }
+
+            @Override
+            public void onItemDelete(Message messages) {
+                showToast("Delete Successfully");
+                deleteMessage(messages);
+            }
+
+            @Override
+            public void onItemEdit(Message messages) {
+                showToast("On Item Edit");
+            }
+        });
+
+        messagesRv.setAdapter(messagesAdapter);
     }
 
     private void setupApiService() {
@@ -50,13 +75,11 @@ public class MessagesActivity extends BaseActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 showToast("Successfully Completed");
                 fetchMessages();
-
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 showToast("Failed to Delete");
-
             }
         });
     }
@@ -88,7 +111,6 @@ public class MessagesActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<Message>> call, Throwable t) {
                 showToast("Failed");
-
             }
         });
     }
@@ -96,26 +118,6 @@ public class MessagesActivity extends BaseActivity {
     private void setupMessagesRv() {
         messagesRv = findViewById(R.id.messages_rv);
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
-        messagesAdapter = new MessagesAdapter();
-        messagesAdapter.setData(message);
-        messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
-            @Override
-            public void onItemClicked(Message messages) {
-                showToast("Clicked");
-            }
-
-            @Override
-            public void onItemDelete(Message messages) {
-                showToast("Delete Successfully");
-                deleteMessage(messages);
-            }
-
-            @Override
-            public void onItemEdit(Message messages) {
-                showToast("On Item Edit");
-            }
-        });
-        messagesRv.setAdapter(messagesAdapter);
     }
 
     private void setupData() {
