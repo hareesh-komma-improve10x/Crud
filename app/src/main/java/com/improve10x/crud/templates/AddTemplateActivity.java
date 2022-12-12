@@ -10,12 +10,13 @@ import android.widget.Toast;
 import com.improve10x.crud.R;
 import com.improve10x.crud.api.CrudApi;
 import com.improve10x.crud.api.CrudService;
+import com.improve10x.crud.base.BaseActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddTemplateActivity extends AppCompatActivity {
+public class AddTemplateActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,14 +1,11 @@
 package com.improve10x.crud.messages;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.improve10x.crud.R;
 import com.improve10x.crud.api.CrudApi;
@@ -25,7 +22,7 @@ import retrofit2.Response;
 public class MessagesActivity extends BaseActivity {
 
     private CrudService crudService;
-    private ArrayList<Message> messages;
+    private ArrayList<Message> message;
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
 
@@ -100,7 +97,7 @@ public class MessagesActivity extends BaseActivity {
         messagesRv = findViewById(R.id.messages_rv);
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesAdapter = new MessagesAdapter();
-        messagesAdapter.setData(messages);
+        messagesAdapter.setData(message);
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onItemClicked(Message messages) {
@@ -111,19 +108,17 @@ public class MessagesActivity extends BaseActivity {
             public void onItemDelete(Message messages) {
                 showToast("Delete Successfully");
                 deleteMessage(messages);
-
             }
 
             @Override
             public void onItemEdit(Message messages) {
                 showToast("On Item Edit");
-
             }
         });
         messagesRv.setAdapter(messagesAdapter);
     }
 
     private void setupData() {
-        messages = new ArrayList<>();
+        message = new ArrayList<>();
     }
 }
