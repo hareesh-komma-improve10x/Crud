@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.improve10x.crud.R;
 import com.improve10x.crud.api.CrudApi;
 import com.improve10x.crud.api.CrudService;
+import com.improve10x.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SeriesItemsActivity extends AppCompatActivity {
+public class SeriesItemsActivity extends BaseActivity {
+
+    private CrudService crudService;
     private ArrayList<SeriesItem> seriesItems;
     private RecyclerView seriesItemsRv;
     private SeriesItemsAdapter seriesItemsAdapter;
@@ -30,11 +33,17 @@ public class SeriesItemsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_series_list);
-        Log.i("SeriesItemsActivity", "onCreate");
         getSupportActionBar().setTitle("Series");
+        setupApiService();
+        log("onCreate");
         handleAdd();
         setupData();
         setupSeriesItemsRv();
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     private void deleteSeriesItem(SeriesItem seriesItem) {
@@ -44,13 +53,13 @@ public class SeriesItemsActivity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(SeriesItemsActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
+                showToast("Successfully Deleted");
                 fetchSeriesItems();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(SeriesItemsActivity.this, "Failed to Delete", Toast.LENGTH_SHORT).show();
+                showToast("Failed to Deleted");
 
             }
         });
@@ -59,7 +68,7 @@ public class SeriesItemsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("SeriesItemsActivity", "onResume");
+        log("onResume");
         fetchSeriesItems();
     }
 
@@ -84,7 +93,7 @@ public class SeriesItemsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<SeriesItem>> call, Throwable t) {
-                Toast.makeText(SeriesItemsActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                showToast("Failed");
 
             }
         });
@@ -98,19 +107,19 @@ public class SeriesItemsActivity extends AppCompatActivity {
         seriesItemsAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onItemClicked(SeriesItem seriesItem) {
-                Toast.makeText(SeriesItemsActivity.this, "On Item Clicked", Toast.LENGTH_SHORT).show();
+                showToast("On Item Clicked");
             }
 
             @Override
             public void onItemDelete(SeriesItem seriesItem) {
-                Toast.makeText(SeriesItemsActivity.this, "On Item Delete", Toast.LENGTH_SHORT).show();
+                showToast("On Item Delete");
                 deleteSeriesItem(seriesItem);
 
             }
 
             @Override
             public void onItemEdit(SeriesItem seriesItem) {
-                Toast.makeText(SeriesItemsActivity.this, "On Item Edit", Toast.LENGTH_SHORT).show();
+                showToast("On Item Edit");
 
             }
         });

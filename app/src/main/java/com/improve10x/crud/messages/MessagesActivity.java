@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.improve10x.crud.R;
 import com.improve10x.crud.api.CrudApi;
 import com.improve10x.crud.api.CrudService;
+import com.improve10x.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MessagesActivity extends AppCompatActivity {
+public class MessagesActivity extends BaseActivity {
 
     private CrudService crudService;
     private ArrayList<Message> messages;
@@ -38,14 +39,6 @@ public class MessagesActivity extends AppCompatActivity {
         handleAdd();
         setupData();
         setupMessagesRv();
-    }
-
-    private void log(String message) {
-        Log.i("MessagesActivity", message);
-    }
-
-    private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void setupApiService() {

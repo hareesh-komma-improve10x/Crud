@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesItemViewHolder>{
+public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesItemViewHolder> {
 
     public List<SeriesItem> seriesList;
 
@@ -23,7 +23,7 @@ public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesItemViewHolde
         onItemActionListener = listener;
     }
 
-     void setData(List<SeriesItem> seriesItems) {
+    void setData(List<SeriesItem> seriesItems) {
         seriesList = seriesItems;
         notifyDataSetChanged();
     }

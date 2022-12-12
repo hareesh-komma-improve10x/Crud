@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.improve10x.crud.R;
 import com.improve10x.crud.api.CrudApi;
 import com.improve10x.crud.api.CrudService;
+import com.improve10x.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TemplatesActivity extends AppCompatActivity {
+public class TemplatesActivity extends BaseActivity {
 
     private CrudService crudService;
     private ArrayList<Template> templates;
@@ -40,18 +41,9 @@ public class TemplatesActivity extends AppCompatActivity {
         setupTemplatesRv();
     }
 
-    private void log(String message) {
-        Log.i("TemplatesActivity", message);
-
-    }
-
     private void setupApiService() {
         CrudApi crudApi = new CrudApi();
         crudService = crudApi.createCrudService();
-    }
-
-    private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void deleteMessage(Template templates) {

@@ -17,12 +17,24 @@ import retrofit2.Response;
 
 public class AddSeriesItemActivity extends AppCompatActivity {
 
+    private CrudService crudService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_series_item);
         getSupportActionBar().setTitle("Add Series");
+        setupApiService();
         handleAdd();
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     private void handleAdd() {
@@ -50,14 +62,14 @@ public class AddSeriesItemActivity extends AppCompatActivity {
         call.enqueue(new Callback<SeriesItem>() {
             @Override
             public void onResponse(Call<SeriesItem> call, Response<SeriesItem> response) {
-                Toast.makeText(AddSeriesItemActivity.this, "Successfully Completed", Toast.LENGTH_SHORT).show();
+                showToast("Successfully Completed");
                 finish();
 
             }
 
             @Override
             public void onFailure(Call<SeriesItem> call, Throwable t) {
-                Toast.makeText(AddSeriesItemActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                showToast("Something Went Wrong");
 
             }
         });

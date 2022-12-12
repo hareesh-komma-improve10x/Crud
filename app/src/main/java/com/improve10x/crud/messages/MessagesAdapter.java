@@ -11,7 +11,7 @@ import com.improve10x.crud.R;
 
 import java.util.List;
 
-public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder>{
+public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     public List<Message> messageList;
 
@@ -21,7 +21,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder>{
         onItemActionListener = listener;
     }
 
-     void setData(List<Message> message) {
+    void setData(List<Message> message) {
         messageList = message;
         notifyDataSetChanged();
     }
@@ -29,7 +29,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder>{
     @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.messages_item, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.messages_item, parent, false);
         MessageViewHolder messagesViewHolder = new MessageViewHolder(view);
         return messagesViewHolder;
     }
