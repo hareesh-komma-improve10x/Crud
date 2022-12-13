@@ -1,10 +1,12 @@
 package com.improve10x.crud.templates;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.improve10x.crud.R;
+import com.improve10x.crud.api.Constants;
 import com.improve10x.crud.api.CrudApi;
 import com.improve10x.crud.api.CrudService;
 import com.improve10x.crud.base.BaseActivity;
@@ -19,15 +21,23 @@ public class AddTemplateActivity extends BaseActivity {
     private Button addBtn;
     private EditText multilineTxt;
     private Template template;
+    private Button editBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_templates);
-        getSupportActionBar().setTitle("Add Template");
         setupViews();
         setupApiService();
-        handleAdd();
+        Intent intent = getIntent();
+        if (intent.hasExtra(Constants.KEY_TEMPLATE)) {
+            getSupportActionBar().setTitle("Edit Template");
+            template = (Template) intent.getSerializableExtra(Constants.KEY_TEMPLATE);
+        } else {
+            getSupportActionBar().setTitle("Add Template");
+            handleAdd();
+        }
     }
 
     private void setupViews() {
