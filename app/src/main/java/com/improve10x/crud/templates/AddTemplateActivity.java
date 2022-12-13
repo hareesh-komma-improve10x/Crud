@@ -1,11 +1,8 @@
 package com.improve10x.crud.templates;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.improve10x.crud.R;
 import com.improve10x.crud.api.CrudApi;
@@ -18,42 +15,60 @@ import retrofit2.Response;
 
 public class AddTemplateActivity extends BaseActivity {
 
+    private CrudService crudService;
+    private Button addBtn;
+    private EditText multilineTxt;
+    private Template template;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_templates);
         getSupportActionBar().setTitle("Add Template");
+        setupViews();
+        setupApiService();
         handleAdd();
     }
 
+    private void setupViews() {
+        addBtn = findViewById(R.id.add_btn);
+        multilineTxt = findViewById(R.id.multiline_txt);
+    }
+
     private void handleAdd() {
-        Button addBtn = findViewById(R.id.add_btn);
         addBtn.setOnClickListener(view -> {
-            EditText multilineTxt = findViewById(R.id.multiline_txt);
             String multiline = multilineTxt.getText().toString();
-            createTemplate(multiline);
+            Template template = createTemplate(multiline);
+            saveMessage(template);
         });
     }
 
-    private void createTemplate(String multiline) {
+    private Template createTemplate(String multiline) {
         Template templates = new Template();
         templates.messageText = multiline;
+        return templates;
+    }
 
+    private void setupApiService() {
         CrudApi crudApi = new CrudApi();
-        CrudService crudService = crudApi.createCrudService();
-        Call<Template> call = crudService.createTemplate(templates);
+        crudService = crudApi.createCrudService();
+    }
+
+    private void saveMessage(Template template) {
+        Call<Template> call = crudService.createTemplate(template);
         call.enqueue(new Callback<Template>() {
             @Override
             public void onResponse(Call<Template> call, Response<Template> response) {
-                Toast.makeText(AddTemplateActivity.this, "Successfully Completed", Toast.LENGTH_SHORT).show();
+                showToast("Successfully Completed");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Template> call, Throwable t) {
-                Toast.makeText(AddTemplateActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                showToast("Something Went Wrong");
 
             }
         });
+
     }
 }

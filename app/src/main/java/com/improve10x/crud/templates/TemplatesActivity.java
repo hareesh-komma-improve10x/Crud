@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.improve10x.crud.R;
+import com.improve10x.crud.api.Constants;
 import com.improve10x.crud.api.CrudApi;
 import com.improve10x.crud.api.CrudService;
 import com.improve10x.crud.base.BaseActivity;
@@ -53,7 +54,10 @@ public class TemplatesActivity extends BaseActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                showToast("Successfully Completed");
+                Intent intent = new Intent(TemplatesActivity.this, AddTemplateActivity.class);
+                intent.putExtra(Constants.KEY_TEMPLATE, templates);
+                startActivity(intent);
+                //showToast("Successfully Completed");
                 fetchTemplates();
             }
 
