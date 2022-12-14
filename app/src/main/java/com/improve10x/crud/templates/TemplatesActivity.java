@@ -54,9 +54,6 @@ public class TemplatesActivity extends BaseActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Intent intent = new Intent(TemplatesActivity.this, AddTemplateActivity.class);
-                intent.putExtra(Constants.KEY_TEMPLATE, templates);
-                startActivity(intent);
                 //showToast("Successfully Completed");
                 fetchTemplates();
             }
@@ -110,7 +107,10 @@ public class TemplatesActivity extends BaseActivity {
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onItemClicked(Template templates) {
-                showToast("On Clicked");
+                Intent intent = new Intent(TemplatesActivity.this, AddTemplateActivity.class);
+                intent.putExtra(Constants.KEY_TEMPLATE, templates);
+                startActivity(intent);
+                //showToast("On Clicked");
             }
 
             @Override

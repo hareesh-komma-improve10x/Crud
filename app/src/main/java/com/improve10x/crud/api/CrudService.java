@@ -36,6 +36,9 @@ public interface CrudService {
     @DELETE(Constants.TEMPLATE_END_POINT + "/{id}")
     Call<Void> deleteTemplate(@Path("id") String id);
 
+    @PUT(Constants.TEMPLATE_END_POINT + "/{id}")
+    Call<Void> updatedTemplate(@Path("id") String id, @Body Template template);
+
     @GET(Constants.SERIES_END_POINT)
     Call<List<SeriesItem>> fetchSeriesItems();
 
