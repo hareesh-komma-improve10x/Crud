@@ -79,7 +79,40 @@ public class QuotesActivity extends BaseActivity {
     private void setupAdapter() {
         quotesAdapter = new QuotesAdapter();
         quotesAdapter.setData(quotes);
+        quotesAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onItemClicked(Quote quote) {
+                showToast("On item Clicked");
+            }
+
+            @Override
+            public void onItemDeleted(Quote quote) {
+                showToast("On item Deleted");
+                deleteQuote(quote);
+            }
+
+            @Override
+            public void onItemEdited(Quote quote) {
+                showToast("ON item Edited");
+            }
+        });
         quotesRv.setAdapter(quotesAdapter);
+    }
+
+    private void deleteQuote(Quote quote) {
+        Call<Void> call = crudService.deleteQuote(quote.id);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                showToast("Completed");
+                fetchQuotes();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                 showToast("Failed");
+            }
+        });
     }
 
     private void setupRv() {
