@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class QuotesActivity extends BaseActivity {
 
     private ArrayList<Quote> quotes;
+    private QuotesAdapter quotesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
