@@ -1,11 +1,8 @@
 package com.improve10x.crud.series;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.improve10x.crud.R;
 import com.improve10x.crud.api.CrudApi;
@@ -19,14 +16,26 @@ import retrofit2.Response;
 public class AddSeriesItemActivity extends BaseActivity {
 
     private CrudService crudService;
+    private Button addBtn;
+    private EditText seriesItemsIdTxt;
+    private EditText seriesItemsNameTxt;
+    private EditText seriesItemsImageUrlTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_series_item);
         getSupportActionBar().setTitle("Add Series");
+        setupViews();
         setupApiService();
         handleAdd();
+    }
+
+    private void setupViews() {
+        addBtn = findViewById(R.id.add_btn);
+        seriesItemsIdTxt = findViewById(R.id.seriesitems_id_txt);
+        seriesItemsNameTxt = findViewById(R.id.seriesitems_name_txt);
+        seriesItemsImageUrlTxt = findViewById(R.id.seriesitems_imageurl_txt);
     }
 
     private void setupApiService() {
@@ -35,26 +44,24 @@ public class AddSeriesItemActivity extends BaseActivity {
     }
 
     private void handleAdd() {
-        Button addBtn = findViewById(R.id.add_btn);
         addBtn.setOnClickListener(view -> {
-            EditText seriesItemsIdTxt = findViewById(R.id.seriesitems_id_txt);
             String seriesItemsId = seriesItemsIdTxt.getText().toString();
-            EditText seriesItemsNameTxt = findViewById(R.id.seriesitems_name_txt);
             String seriesItemsName = seriesItemsNameTxt.getText().toString();
-            EditText seriesItemsImageUrlTxt = findViewById(R.id.seriesitems_imageurl_txt);
             String seriesItemsImageUrl = seriesItemsImageUrlTxt.getText().toString();
-            createSeriesItem(seriesItemsId, seriesItemsName, seriesItemsImageUrl);
+            SeriesItem seriesItem = createSeriesItem(seriesItemsId, seriesItemsName, seriesItemsImageUrl);
+            saveSeriesItems(seriesItem);
         });
     }
 
-    private void createSeriesItem(String seriesItemsId, String seriesItemsName, String seriesItemsImageUrl) {
+    private SeriesItem createSeriesItem(String seriesItemsId, String seriesItemsName, String seriesItemsImageUrl) {
         SeriesItem seriesItem = new SeriesItem();
         seriesItem.seriesId = seriesItemsId;
         seriesItem.title = seriesItemsName;
         seriesItem.imageUrl = seriesItemsImageUrl;
+        return seriesItem;
+    }
 
-        CrudApi crudApi = new CrudApi();
-        CrudService crudService = crudApi.createCrudService();
+    private void saveSeriesItems(SeriesItem seriesItem) {
         Call<SeriesItem> call = crudService.createSeriesItem(seriesItem);
         call.enqueue(new Callback<SeriesItem>() {
             @Override
@@ -70,5 +77,6 @@ public class AddSeriesItemActivity extends BaseActivity {
 
             }
         });
+
     }
 }
