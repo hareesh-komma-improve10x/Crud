@@ -1,6 +1,7 @@
 package com.improve10x.crud.api;
 
 import com.improve10x.crud.messages.Message;
+import com.improve10x.crud.quotes.Quote;
 import com.improve10x.crud.series.SeriesItem;
 import com.improve10x.crud.templates.Template;
 
@@ -50,4 +51,10 @@ public interface CrudService {
 
     @PUT(Constants.SERIES_END_POINT + "/{id}")
     Call<Void> updatedSeriesItem(@Path("id") String id, @Body SeriesItem seriesItem);
+
+    @GET (Constants.QUOTES_END_POINT)
+    Call<List<Quote>> fetchQuotes();
+
+    @POST(Constants.QUOTES_END_POINT)
+    Call<Quote> createQuote(@Body Quote quote);
 }
