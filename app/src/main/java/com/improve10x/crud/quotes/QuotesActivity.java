@@ -1,6 +1,8 @@
 package com.improve10x.crud.quotes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -13,6 +15,7 @@ public class QuotesActivity extends BaseActivity {
 
     private ArrayList<Quote> quotes;
     private QuotesAdapter quotesAdapter;
+    private RecyclerView quotesRv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +23,27 @@ public class QuotesActivity extends BaseActivity {
         setContentView(R.layout.activity_quotes);
         getSupportActionBar().setTitle("Quotes");
         setupData();
+        setupRv();
+        setupAdapter();
+    }
+
+    private void setupAdapter() {
+        quotesAdapter = new QuotesAdapter();
+        quotesAdapter.setData(quotes);
+        quotesRv.setAdapter(quotesAdapter);
+    }
+
+    private void setupRv() {
+        quotesRv = findViewById(R.id.quotes_rv);
+        quotesRv.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void setupData() {
         quotes = new ArrayList<>();
 
         Quote quoteTxt = new Quote();
-        quoteTxt.quoteText = "";
-        quoteTxt.authorName = "";
+        quoteTxt.quoteText = "Hiiii";
+        quoteTxt.authorName = "Hari";
         quoteTxt.category = "career";
         quoteTxt.imageUrl = "https://www.kochiesbusinessbuilders.com.au/wp-content/uploads/2022/02/motivational-quote.jpg";
         quotes.add(quoteTxt);
