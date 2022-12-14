@@ -1,10 +1,12 @@
 package com.improve10x.crud.series;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.improve10x.crud.R;
+import com.improve10x.crud.api.Constants;
 import com.improve10x.crud.api.CrudApi;
 import com.improve10x.crud.api.CrudService;
 import com.improve10x.crud.base.BaseActivity;
@@ -20,15 +22,30 @@ public class AddSeriesItemActivity extends BaseActivity {
     private EditText seriesItemsIdTxt;
     private EditText seriesItemsNameTxt;
     private EditText seriesItemsImageUrlTxt;
+    private SeriesItem seriesItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_series_item);
-        getSupportActionBar().setTitle("Add Series");
         setupViews();
         setupApiService();
-        handleAdd();
+        Intent intent = getIntent();
+        if (intent.hasExtra(Constants.KEY_SERIES)) {
+            getSupportActionBar().setTitle("Edit Series");
+            seriesItem = (SeriesItem) intent.getSerializableExtra(Constants.KEY_SERIES);
+            showData();
+        } else {
+            getSupportActionBar().setTitle("Add Series");
+            handleAdd();
+        }
+    }
+
+    private void showData() {
+        seriesItemsIdTxt.setText(seriesItem.Id);
+        seriesItemsNameTxt.setText(seriesItem.title);
+        seriesItemsImageUrlTxt.setText(seriesItem.imageUrl);
+        showToast("edit");
     }
 
     private void setupViews() {
