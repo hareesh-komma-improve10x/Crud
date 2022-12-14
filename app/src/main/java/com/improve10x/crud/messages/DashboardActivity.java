@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.improve10x.crud.R;
 import com.improve10x.crud.movies.MoviesActivity;
+import com.improve10x.crud.quotes.QuotesActivity;
 import com.improve10x.crud.series.SeriesItemsActivity;
 import com.improve10x.crud.templates.TemplatesActivity;
 
@@ -23,6 +24,15 @@ public class DashboardActivity extends AppCompatActivity {
         handleAddTemplateButton();
         handleAddSeriesButton();
         handleAddMoviesButton();
+        handleAddQuotesButton();
+    }
+
+    private void handleAddQuotesButton() {
+        ImageView quotesImageBtn = findViewById(R.id.quotes_image_btn);
+        quotesImageBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, QuotesActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void handleAddMoviesButton() {

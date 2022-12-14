@@ -71,4 +71,19 @@
         android:text="Movies"
         android:textColor="#272222"
         android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/quotes_image_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/improve10x_logo__1_" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Quotes"
+        android:textColor="#1E1919"
+        android:textSize="20sp" />
 </LinearLayout>
