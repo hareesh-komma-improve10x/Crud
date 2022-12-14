@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.improve10x.crud.R;
 import com.improve10x.crud.api.CrudApi;
@@ -30,10 +32,25 @@ public class QuotesActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quotes);
         getSupportActionBar().setTitle("Quotes");
+        setupApi();
+        handleAdd();
         setupData();
         setupRv();
         setupAdapter();
-        setupApi();
+
+    }
+
+    private void handleAdd() {
+        Button addBtn = findViewById(R.id.add_btn);
+        addBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AddEditQuoteActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         fetchQuotes();
     }
 
