@@ -18,5 +18,24 @@ public class QuotesActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quotes);
         getSupportActionBar().setTitle("Quotes");
+        setupData();
+    }
+
+    private void setupData() {
+        quotes = new ArrayList<>();
+
+        Quote quoteTxt = new Quote();
+        quoteTxt.quoteText = "";
+        quoteTxt.authorName = "";
+        quoteTxt.category = "career";
+        quoteTxt.imageUrl = "https://www.kochiesbusinessbuilders.com.au/wp-content/uploads/2022/02/motivational-quote.jpg";
+        quotes.add(quoteTxt);
+
+        Quote quoteTxt1 = new Quote();
+        quoteTxt1.quoteText = "i will success not immeditly";
+        quoteTxt1.authorName = "Hareesh";
+        quoteTxt1.category = "career";
+        quoteTxt1.imageUrl = "https://emilysquotes.files.wordpress.com/2014/03/emilysquotes-com-mistakes-progress-slow-trying-tony-robbins-inspirational-motivational.jpg?w=788";
+        quotes.add(quoteTxt1);
     }
 }
