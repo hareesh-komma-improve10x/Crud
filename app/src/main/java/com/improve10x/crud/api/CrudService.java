@@ -47,4 +47,7 @@ public interface CrudService {
 
     @DELETE(Constants.SERIES_END_POINT + "/{id}")
     Call<Void> deleteSeriesItem(@Path("id")String id);
+
+    @PUT(Constants.SERIES_END_POINT + "/{id}")
+    Call<Void> updatedSeriesItem(@Path("id") String id, @Body SeriesItem seriesItem);
 }

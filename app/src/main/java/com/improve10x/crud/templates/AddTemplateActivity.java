@@ -60,7 +60,6 @@ public class AddTemplateActivity extends BaseActivity {
             String multiline = multilineTxt.getText().toString();
             Template updatedTemplate = createTemplate(multiline);
             updateTemplate(template.id, updatedTemplate);
-
         });
     }
 

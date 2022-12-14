@@ -111,7 +111,6 @@ public class SeriesItemsActivity extends BaseActivity {
                 Intent intent = new Intent(SeriesItemsActivity.this, AddSeriesItemActivity.class);
                 intent.putExtra(Constants.KEY_SERIES, seriesItem);
                 startActivity(intent);
-                showToast("On Item Clicked");
             }
 
             @Override
