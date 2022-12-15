@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="8dp"
     android:orientation="vertical"
-    tools:context=".quotes.AddEditQuoteActivity">
+    tools:context=".quotes.BaseAddEditQuoteActivity">
 
     <TextView
         android:id="@+id/textView12"
@@ -83,7 +83,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
             android:text="Add"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/edit_btn"
@@ -91,6 +92,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
             android:text="Edit"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>
