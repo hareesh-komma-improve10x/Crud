@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.improve10x.crud.R;
+import com.improve10x.crud.api.Constants;
 import com.improve10x.crud.api.CrudApi;
 import com.improve10x.crud.api.CrudService;
 import com.improve10x.crud.base.BaseActivity;
@@ -82,7 +83,10 @@ public class QuotesActivity extends BaseActivity {
         quotesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onItemClicked(Quote quote) {
-                showToast("On item Clicked");
+                Intent intent = new Intent(QuotesActivity.this, AddEditQuoteActivity.class);
+                intent.putExtra(Constants.KEY_QUOTE, quote);
+                startActivity(intent);
+                //showToast("On item Clicked");
             }
 
             @Override
@@ -104,13 +108,13 @@ public class QuotesActivity extends BaseActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                showToast("Completed");
+                showToast("Item Deleted");
                 fetchQuotes();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                 showToast("Failed");
+                 showToast("Failed to Delete");
             }
         });
     }

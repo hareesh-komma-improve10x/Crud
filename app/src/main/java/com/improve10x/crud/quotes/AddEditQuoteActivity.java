@@ -1,10 +1,12 @@
 package com.improve10x.crud.quotes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.improve10x.crud.R;
+import com.improve10x.crud.api.Constants;
 import com.improve10x.crud.api.CrudApi;
 import com.improve10x.crud.api.CrudService;
 import com.improve10x.crud.base.BaseActivity;
@@ -21,15 +23,30 @@ public class AddEditQuoteActivity extends BaseActivity {
     private EditText authorNameTxt;
     private EditText categoryTxt;
     private EditText imageUrlTxt;
+    private Quote quote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_quote);
-        getSupportActionBar().setTitle("Edit Quote");
         setupViews();
         setupApiService();
-        handleAdd();
+        Intent intent = getIntent();
+        if (intent.hasExtra(Constants.KEY_QUOTE)) {
+            getSupportActionBar().setTitle("Edit Quote");
+            quote = (Quote) intent.getSerializableExtra(Constants.KEY_QUOTE);
+            showData();
+        } else {
+            getSupportActionBar().setTitle("Add Quote");
+            handleAdd();
+        }
+    }
+
+    private void showData() {
+        quoteTxt.setText(quote.quoteText);
+        authorNameTxt.setText(quote.authorName);
+        categoryTxt.setText(quote.category);
+        imageUrlTxt.setText(quote.imageUrl);
     }
 
     private void setupViews() {

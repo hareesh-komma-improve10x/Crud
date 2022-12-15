@@ -86,6 +86,7 @@ public class AddMessageActivity extends BaseActivity {
         nameTxt.setText(message.name);
         phoneNumberTxt.setText(message.phoneNumber);
         messageTxt.setText(message.messageText);
+        showToast("data");
     }
 
     private void setupViews() {
