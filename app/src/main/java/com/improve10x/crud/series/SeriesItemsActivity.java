@@ -90,7 +90,6 @@ public class SeriesItemsActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<SeriesItem>> call, Throwable t) {
                 showToast("Failed");
-
             }
         });
     }
@@ -98,7 +97,6 @@ public class SeriesItemsActivity extends BaseActivity {
     private void setupSeriesItemsRv() {
         seriesItemsRv = findViewById(R.id.series_items_rv);
         seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
     private void setupAdapter() {
@@ -116,13 +114,11 @@ public class SeriesItemsActivity extends BaseActivity {
             public void onItemDelete(SeriesItem seriesItem) {
                 showToast("On Item Delete");
                 deleteSeriesItem(seriesItem);
-
             }
 
             @Override
             public void onItemEdit(SeriesItem seriesItem) {
                 showToast("On Item Edit");
-
             }
         });
         seriesItemsRv.setAdapter(seriesItemsAdapter);

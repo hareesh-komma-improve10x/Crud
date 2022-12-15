@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class SeriesItem implements Serializable {
+
     @SerializedName("_id")
     String Id;
     String seriesId;

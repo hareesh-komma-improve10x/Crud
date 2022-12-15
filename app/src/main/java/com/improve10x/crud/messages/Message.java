@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Message implements Serializable {
+
     @SerializedName("_id")
     String id;
     @SerializedName("name")

@@ -64,7 +64,7 @@ public class AddTemplateActivity extends BaseActivity {
     }
 
     private void updateTemplate(String id, Template updatedTemplate) {
-        Call<Void> call = crudService.updatedTemplate(id,updatedTemplate);
+        Call<Void> call = crudService.updatedTemplate(id, updatedTemplate);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -122,6 +122,5 @@ public class AddTemplateActivity extends BaseActivity {
                 showToast("Something Went Wrong");
             }
         });
-
     }
 }

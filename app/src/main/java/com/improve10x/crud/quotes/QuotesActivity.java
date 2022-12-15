@@ -38,7 +38,6 @@ public class QuotesActivity extends BaseActivity {
         setupData();
         setupRv();
         setupAdapter();
-
     }
 
     private void handleAdd() {
@@ -67,7 +66,6 @@ public class QuotesActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<Quote>> call, Throwable t) {
                 showToast("Failed");
-
             }
         });
     }
@@ -86,7 +84,6 @@ public class QuotesActivity extends BaseActivity {
                 Intent intent = new Intent(QuotesActivity.this, AddEditQuoteActivity.class);
                 intent.putExtra(Constants.KEY_QUOTE, quote);
                 startActivity(intent);
-                //showToast("On item Clicked");
             }
 
             @Override
@@ -127,7 +124,7 @@ public class QuotesActivity extends BaseActivity {
     private void setupData() {
         quotes = new ArrayList<>();
 
-        Quote quoteTxt = new Quote();
+        /*Quote quoteTxt = new Quote();
         quoteTxt.quoteText = "Hiiii";
         quoteTxt.authorName = "Hari";
         quoteTxt.category = "career";
@@ -139,6 +136,6 @@ public class QuotesActivity extends BaseActivity {
         quoteTxt1.authorName = "Hareesh";
         quoteTxt1.category = "career";
         quoteTxt1.imageUrl = "https://emilysquotes.files.wordpress.com/2014/03/emilysquotes-com-mistakes-progress-slow-trying-tony-robbins-inspirational-motivational.jpg?w=788";
-        quotes.add(quoteTxt1);
+        quotes.add(quoteTxt1);*/
     }
 }

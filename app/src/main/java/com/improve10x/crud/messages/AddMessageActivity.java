@@ -33,7 +33,7 @@ public class AddMessageActivity extends BaseActivity {
         setupViews();
         setupApiService();
         Intent intent = getIntent();
-        if(intent.hasExtra(Constants.KEY_MESSAGE)) {
+        if (intent.hasExtra(Constants.KEY_MESSAGE)) {
             getSupportActionBar().setTitle("Edit Message");
             message = (Message) intent.getSerializableExtra(Constants.KEY_MESSAGE);
             showData();

@@ -40,6 +40,7 @@ public class TemplatesActivity extends BaseActivity {
         handleAdd();
         setupData();
         setupTemplatesRv();
+        setupAdapter();
     }
 
     private void setupApiService() {
@@ -54,7 +55,6 @@ public class TemplatesActivity extends BaseActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                //showToast("Successfully Completed");
                 fetchTemplates();
             }
 
@@ -101,16 +101,17 @@ public class TemplatesActivity extends BaseActivity {
     private void setupTemplatesRv() {
         templatesRv = findViewById(R.id.templates_rv);
         templatesRv.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void setupAdapter() {
         templatesAdapter = new TemplatesAdapter();
         templatesAdapter.setTemplatesList(templates);
-        templatesRv.setAdapter(templatesAdapter);
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onItemClicked(Template templates) {
                 Intent intent = new Intent(TemplatesActivity.this, AddTemplateActivity.class);
                 intent.putExtra(Constants.KEY_TEMPLATE, templates);
                 startActivity(intent);
-                //showToast("On Clicked");
             }
 
             @Override
@@ -124,6 +125,8 @@ public class TemplatesActivity extends BaseActivity {
                 showToast("Edited");
             }
         });
+
+        templatesRv.setAdapter(templatesAdapter);
     }
 
     private void setupData() {

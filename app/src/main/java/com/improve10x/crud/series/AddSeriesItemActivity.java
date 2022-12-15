@@ -126,13 +126,11 @@ public class AddSeriesItemActivity extends BaseActivity {
             public void onResponse(Call<SeriesItem> call, Response<SeriesItem> response) {
                 showToast("Successfully Completed");
                 finish();
-
             }
 
             @Override
             public void onFailure(Call<SeriesItem> call, Throwable t) {
                 showToast("Something Went Wrong");
-
             }
         });
 
