@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Quote implements Serializable {
-    @SerializedName("id")
+    @SerializedName("_id")
     String id;
     @SerializedName("quote")
     String quoteText;
