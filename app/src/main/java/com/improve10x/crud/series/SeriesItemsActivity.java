@@ -40,6 +40,7 @@ public class SeriesItemsActivity extends BaseActivity {
         handleAdd();
         setupData();
         setupSeriesItemsRv();
+        setupAdapter();
     }
 
     private void setupApiService() {
@@ -48,8 +49,6 @@ public class SeriesItemsActivity extends BaseActivity {
     }
 
     private void deleteSeriesItem(SeriesItem seriesItem) {
-        CrudApi crudApi = new CrudApi();
-        CrudService crudService = crudApi.createCrudService();
         Call<Void> call = crudService.deleteSeriesItem(seriesItem.Id);
         call.enqueue(new Callback<Void>() {
             @Override
@@ -57,11 +56,9 @@ public class SeriesItemsActivity extends BaseActivity {
                 showToast("Successfully Deleted");
                 fetchSeriesItems();
             }
-
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 showToast("Failed to Deleted");
-
             }
         });
     }
@@ -82,8 +79,6 @@ public class SeriesItemsActivity extends BaseActivity {
     }
 
     private void fetchSeriesItems() {
-        CrudApi crudApi = new CrudApi();
-        CrudService crudService = crudApi.createCrudService();
         Call<List<SeriesItem>> call = crudService.fetchSeriesItems();
         call.enqueue(new Callback<List<SeriesItem>>() {
             @Override
@@ -103,6 +98,10 @@ public class SeriesItemsActivity extends BaseActivity {
     private void setupSeriesItemsRv() {
         seriesItemsRv = findViewById(R.id.series_items_rv);
         seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
+
+    }
+
+    private void setupAdapter() {
         seriesItemsAdapter = new SeriesItemsAdapter();
         seriesItemsAdapter.setData(seriesItems);
         seriesItemsAdapter.setOnItemActionListener(new OnItemActionListener() {

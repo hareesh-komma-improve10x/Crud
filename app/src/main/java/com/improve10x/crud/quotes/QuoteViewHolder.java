@@ -14,9 +14,9 @@ import org.w3c.dom.Text;
 
 public class QuoteViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView quoteImageImg;
     TextView quoteTextTxt;
     TextView authorNameTxt;
+    ImageView quoteImageImg;
     ImageView deleteBtn;
 
     public QuoteViewHolder(@NonNull View itemView) {
