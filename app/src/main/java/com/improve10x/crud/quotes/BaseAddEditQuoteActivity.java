@@ -44,4 +44,14 @@ public class BaseAddEditQuoteActivity extends BaseActivity {
         CrudApi crudApi = new CrudApi();
         crudService = crudApi.createCrudService();
     }
+
+    protected Quote createQuote(String quote, String authorName, String category, String imageUrl) {
+        Quote quoteTxt = new Quote();
+        quoteTxt.quoteText = quote;
+        quoteTxt.authorName = authorName;
+        quoteTxt.category = category;
+        quoteTxt.imageUrl = imageUrl;
+        return quoteTxt;
+    }
+
 }
