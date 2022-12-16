@@ -46,7 +46,7 @@ public class MessagesActivity extends BaseActivity {
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onItemClicked(Message messages) {
-                Intent intent = new Intent(MessagesActivity.this, AddMessageActivity.class);
+                Intent intent = new Intent(MessagesActivity.this, EditMessageActivity.class);
                 intent.putExtra(Constants.KEY_MESSAGE, messages);
                 startActivity(intent);
             }
