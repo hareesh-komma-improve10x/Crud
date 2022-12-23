@@ -2,9 +2,10 @@ package com.improve10x.crud.messages;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
-import com.improve10x.crud.R;
+
+
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -12,30 +13,24 @@ import retrofit2.Response;
 
 public class AddMessageActivity extends BaseAddEditMessageActivity{
 
-    private Button addBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupViews();
         getSupportActionBar().setTitle("Add Message");
         showAddBtn();
         handleAdd();
     }
 
-    private void setupViews() {
-        addBtn = findViewById(R.id.message_add_btn);
-    }
 
     private void showAddBtn() {
-        addBtn.setVisibility(View.VISIBLE);
+        binding.messageAddBtn.setVisibility(View.VISIBLE);
     }
 
     private void handleAdd() {
-        addBtn.setOnClickListener(view -> {
-            String name = nameTxt.getText().toString();
-            String phoneNumber = phoneNumberTxt.getText().toString();
-            String messageText = messageTxt.getText().toString();
+        binding.messageAddBtn.setOnClickListener(view -> {
+            String name = binding.nameTxt.getText().toString();
+            String phoneNumber = binding.phoneNumberTxt.getText().toString();
+            String messageText = binding.messageTxt.getText().toString();
             Message message = createMessage(name, phoneNumber, messageText);
             saveMessage(message);
         });

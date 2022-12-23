@@ -14,12 +14,11 @@ import retrofit2.Response;
 
 public class EditMessageActivity extends BaseAddEditMessageActivity{
 
-    private Button editBtn;
+    private Message message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupViews();
         Intent intent = getIntent();
         if (intent.hasExtra(Constants.KEY_MESSAGE)) {
             getSupportActionBar().setTitle("Edit Message");
@@ -30,26 +29,22 @@ public class EditMessageActivity extends BaseAddEditMessageActivity{
         }
     }
 
-    private void setupViews() {
-        editBtn = findViewById(R.id.edit_btn);
-    }
-
     private void showData() {
-        nameTxt.setText(message.name);
-        phoneNumberTxt.setText(message.phoneNumber);
-        messageTxt.setText(message.messageText);
+        binding.nameTxt.setText(message.name);
+        binding.phoneNumberTxt.setText(message.phoneNumber);
+        binding.messageTxt.setText(message.messageText);
         showToast("data");
     }
 
     private void showEditBtn() {
-        editBtn.setVisibility(View.VISIBLE);
+        binding.editBtn.setVisibility(View.VISIBLE);
     }
 
     private void handleEdit() {
-        editBtn.setOnClickListener(view -> {
-            String name = nameTxt.getText().toString();
-            String phoneNumber = phoneNumberTxt.getText().toString();
-            String messageText = messageTxt.getText().toString();
+        binding.editBtn.setOnClickListener(view -> {
+            String name = binding.nameTxt.getText().toString();
+            String phoneNumber = binding.phoneNumberTxt.getText().toString();
+            String messageText = binding.messageTxt.getText().toString();
             Message updatedMessage = createMessage(name, phoneNumber, messageText);
             updateMessage(message.id, updatedMessage);
         });
