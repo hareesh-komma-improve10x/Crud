@@ -12,6 +12,7 @@ import com.improve10x.crud.api.Constants;
 import com.improve10x.crud.api.CrudApi;
 import com.improve10x.crud.api.CrudService;
 import com.improve10x.crud.base.BaseActivity;
+import com.improve10x.crud.databinding.ActivityMessagesBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,15 +23,16 @@ import retrofit2.Response;
 
 public class MessagesActivity extends BaseActivity {
 
+    private ActivityMessagesBinding binding;
     private CrudService crudService;
     private ArrayList<Message> message;
-    private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_messages);
+        binding = ActivityMessagesBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Messages");
         log("onCreate");
         setupApiService();
@@ -63,7 +65,7 @@ public class MessagesActivity extends BaseActivity {
             }
         });
 
-        messagesRv.setAdapter(messagesAdapter);
+        binding.messagesRv.setAdapter(messagesAdapter);
     }
 
     private void setupApiService() {
@@ -119,8 +121,7 @@ public class MessagesActivity extends BaseActivity {
     }
 
     private void setupMessagesRv() {
-        messagesRv = findViewById(R.id.messages_rv);
-        messagesRv.setLayoutManager(new LinearLayoutManager(this));
+        binding.messagesRv.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void setupData() {
