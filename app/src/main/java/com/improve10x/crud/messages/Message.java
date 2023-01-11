@@ -7,11 +7,11 @@ import java.io.Serializable;
 public class Message implements Serializable {
 
     @SerializedName("_id")
-    String id;
+    public String id;
     @SerializedName("name")
-    String name;
+    public String name;
     @SerializedName("phoneNumber")
-    String phoneNumber;
+    public String phoneNumber;
     @SerializedName("messageText")
-    String messageText;
+    public String messageText;
 }
