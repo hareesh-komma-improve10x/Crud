@@ -30,9 +30,7 @@ public class EditMessageActivity extends BaseAddEditMessageActivity{
     }
 
     private void showData() {
-        binding.nameTxt.setText(message.name);
-        binding.phoneNumberTxt.setText(message.phoneNumber);
-        binding.messageTxt.setText(message.messageText);
+        binding.setMessage(message);
         showToast("data");
     }
 
