@@ -14,7 +14,7 @@
       android:layout_height="wrap_content"
       android:layout_weight="1"
       android:gravity="center"
-      android:text="CRUD"
+      android:text="@string/app_name"
       android:textColor="#485DD3"
       android:textSize="34sp" />
 
