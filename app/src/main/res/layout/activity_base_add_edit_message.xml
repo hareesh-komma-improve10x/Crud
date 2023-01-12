@@ -77,7 +77,8 @@
             android:backgroundTint="#03A9F4"
             android:text="Add"
             android:textAllCaps="false"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:visibility="visible"/>
 
         <Button
             android:id="@+id/edit_btn"
@@ -86,6 +87,7 @@
             android:backgroundTint="#03A9F4"
             android:text="Edit"
             android:textAllCaps="false"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:visibility="visible"/>
     </LinearLayout>
 </layout>
