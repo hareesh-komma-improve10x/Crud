@@ -9,4 +9,7 @@
     <string name="series_id">Series Id</string>
     <string name="series_name">Series Name</string>
     <string name="image_url">Image Url</string>
+    <string name="quote">Quote</string>
+    <string name="author_name_txt">Author Name</string>
+    <string name="category">Category</string>
 </resources>
