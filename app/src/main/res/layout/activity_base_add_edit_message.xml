@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="message"
             type="com.improve10x.crud.messages.Message" />
     </data>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/name"
-            android:textColor="#292525"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -26,16 +26,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:inputType="textPersonName"
             android:text="@{message.name}"
-            tools:hint="Input text"
-            android:inputType="textPersonName" />
+            android:textColor="@color/black"
+            tools:hint="Input text" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/phone_number"
-            android:textColor="#292525"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -52,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/message"
-            android:textColor="#292525"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
@@ -74,20 +75,22 @@
             android:id="@+id/message_add_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#03A9F4"
-            android:text="Add"
+            android:backgroundTint="@color/button_background_color"
+            android:text="@string/add_btn"
             android:textAllCaps="false"
+            android:textColor="#2D42B3"
             android:visibility="gone"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <Button
             android:id="@+id/edit_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#03A9F4"
-            android:text="Edit"
+            android:backgroundTint="@color/button_background_color"
+            android:text="@string/edit_btn"
             android:textAllCaps="false"
+            android:textColor="#2D42B3"
             android:visibility="gone"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
     </LinearLayout>
 </layout>

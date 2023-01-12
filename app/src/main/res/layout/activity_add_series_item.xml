@@ -12,8 +12,8 @@
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Series Id"
-        android:textColor="#292424"
+        android:text="@string/series_id"
+        android:textColor="@color/black"
         android:textSize="20sp" />
 
     <EditText
@@ -27,8 +27,8 @@
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Series Name"
-        android:textColor="#2E2828"
+        android:text="@string/series_name"
+        android:textColor="@color/black"
         android:textSize="20sp" />
 
     <EditText
@@ -42,8 +42,8 @@
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Image Url"
-        android:textColor="#2B2525"
+        android:text="@string/image_url"
+        android:textColor="@color/black"
         android:textSize="20sp" />
 
     <EditText
@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
-            android:text="Add"
+            android:text="@string/add_btn"
             android:textAllCaps="false" />
 
         <Button
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
-            android:text="Edit"
+            android:text="@string/edit_btn"
             android:textAllCaps="false" />
     </LinearLayout>
 </LinearLayout>

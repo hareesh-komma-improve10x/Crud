@@ -21,6 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#03A9F4"
-        android:text="Add"
+        android:text="@string/add_btn"
         android:textAllCaps="false" />
 </LinearLayout>
